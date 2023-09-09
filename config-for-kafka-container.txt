@@ -1,0 +1,13 @@
+Настройка Кафка контейнера
+
+
+После того как ваши контейнеры заработали, необходимо создать топик
+Для этого в консоли необходимо прописать несколько команд
+
+1. docker exec -it kafka /bin/sh
+
+2. cd opt/kafka_2.13-2.8.1/bin
+
+Выполним команду для создания нашего топика
+
+3. kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3 --topic document-management-topic

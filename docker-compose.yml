@@ -1,0 +1,27 @@
+version: '3'
+services:
+  postgres:
+    image: 'postgres:15'
+    container_name: 'database'
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_HOST: 'localhost'
+      POSTGRES_USER: 'admin'
+      POSTGRES_DB: 'document_management'
+      POSTGRES_PASSWORD: 'password'
+
+  zookeeper:
+    image: 'wurstmeister/zookeeper'
+    container_name: 'zookeeper'
+    ports:
+      - '2181:2181'
+
+  kafka:
+    image: 'wurstmeister/kafka'
+    container_name: 'kafka'
+    ports:
+      - '9092:9092'
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 'localhost'
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
